@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		566CF2FF24D0150800396693 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566CF2FE24D0150800396693 /* AppDelegate.swift */; };
 		566CF30124D0150800396693 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566CF30024D0150800396693 /* SceneDelegate.swift */; };
-		566CF30324D0150800396693 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566CF30224D0150800396693 /* ViewController.swift */; };
+		566CF30324D0150800396693 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566CF30224D0150800396693 /* MainViewController.swift */; };
 		566CF30624D0150800396693 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 566CF30424D0150800396693 /* Main.storyboard */; };
 		566CF30824D0150A00396693 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 566CF30724D0150A00396693 /* Assets.xcassets */; };
 		566CF30B24D0150A00396693 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 566CF30924D0150A00396693 /* LaunchScreen.storyboard */; };
@@ -21,13 +21,19 @@
 		5697E4A824D04A9A00B211EA /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5697E4A724D04A9A00B211EA /* Content.swift */; };
 		5697E4AA24D04C5700B211EA /* ContentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5697E4A924D04C5700B211EA /* ContentData.swift */; };
 		5697E4AD24D04DBA00B211EA /* PryanikyNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5697E4AC24D04DBA00B211EA /* PryanikyNetworkService.swift */; };
+		5697E4B124D0629700B211EA /* NetworkResponseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5697E4B024D0629700B211EA /* NetworkResponseError.swift */; };
+		5697E4B324D0695A00B211EA /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5697E4B224D0695A00B211EA /* MainPresenter.swift */; };
+		5697E4B524D069B500B211EA /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5697E4B424D069B500B211EA /* MainView.swift */; };
+		5697E4B924D071B200B211EA /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5697E4B824D071B200B211EA /* AppCoordinator.swift */; };
+		5697E4BC24D0748300B211EA /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5697E4BB24D0748300B211EA /* MainCoordinator.swift */; };
+		5697E4BF24D0771200B211EA /* UIStoryboard+instantiateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5697E4BE24D0771200B211EA /* UIStoryboard+instantiateVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		566CF2FB24D0150800396693 /* PryanikyTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PryanikyTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		566CF2FE24D0150800396693 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		566CF30024D0150800396693 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		566CF30224D0150800396693 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		566CF30224D0150800396693 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		566CF30524D0150800396693 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		566CF30724D0150A00396693 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		566CF30A24D0150A00396693 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -40,6 +46,12 @@
 		5697E4A724D04A9A00B211EA /* Content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
 		5697E4A924D04C5700B211EA /* ContentData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentData.swift; sourceTree = "<group>"; };
 		5697E4AC24D04DBA00B211EA /* PryanikyNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PryanikyNetworkService.swift; sourceTree = "<group>"; };
+		5697E4B024D0629700B211EA /* NetworkResponseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResponseError.swift; sourceTree = "<group>"; };
+		5697E4B224D0695A00B211EA /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
+		5697E4B424D069B500B211EA /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		5697E4B824D071B200B211EA /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		5697E4BB24D0748300B211EA /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		5697E4BE24D0771200B211EA /* UIStoryboard+instantiateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboard+instantiateVC.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,12 +84,15 @@
 		566CF2FD24D0150800396693 /* PryanikyTest */ = {
 			isa = PBXGroup;
 			children = (
+				566CF31324D0165F00396693 /* Application */,
+				5697E4BA24D0730B00B211EA /* AppCoordinator */,
+				5697E4AE24D0627600B211EA /* Base */,
+				5697E4BD24D076D900B211EA /* Extentions */,
 				5697E4AB24D04D5F00B211EA /* Services */,
 				566CF31524D0184200396693 /* Models */,
-				566CF31324D0165F00396693 /* Application */,
+				566CF31424D0169500396693 /* Screens */,
 				566CF30424D0150800396693 /* Main.storyboard */,
 				566CF30924D0150A00396693 /* LaunchScreen.storyboard */,
-				566CF31424D0169500396693 /* Screens */,
 				566CF31224D0163A00396693 /* Resources */,
 			);
 			path = PryanikyTest;
@@ -104,7 +119,10 @@
 		566CF31424D0169500396693 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				566CF30224D0150800396693 /* ViewController.swift */,
+				566CF30224D0150800396693 /* MainViewController.swift */,
+				5697E4B424D069B500B211EA /* MainView.swift */,
+				5697E4B224D0695A00B211EA /* MainPresenter.swift */,
+				5697E4BB24D0748300B211EA /* MainCoordinator.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -137,6 +155,38 @@
 				5697E4AC24D04DBA00B211EA /* PryanikyNetworkService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		5697E4AE24D0627600B211EA /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				5697E4AF24D0628200B211EA /* Enums */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		5697E4AF24D0628200B211EA /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				5697E4B024D0629700B211EA /* NetworkResponseError.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
+		5697E4BA24D0730B00B211EA /* AppCoordinator */ = {
+			isa = PBXGroup;
+			children = (
+				5697E4B824D071B200B211EA /* AppCoordinator.swift */,
+			);
+			path = AppCoordinator;
+			sourceTree = "<group>";
+		};
+		5697E4BD24D076D900B211EA /* Extentions */ = {
+			isa = PBXGroup;
+			children = (
+				5697E4BE24D0771200B211EA /* UIStoryboard+instantiateVC.swift */,
+			);
+			path = Extentions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -210,11 +260,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5697E4BC24D0748300B211EA /* MainCoordinator.swift in Sources */,
+				5697E4B124D0629700B211EA /* NetworkResponseError.swift in Sources */,
+				5697E4B524D069B500B211EA /* MainView.swift in Sources */,
 				5697E4AD24D04DBA00B211EA /* PryanikyNetworkService.swift in Sources */,
+				5697E4B924D071B200B211EA /* AppCoordinator.swift in Sources */,
 				5697E4A224D048B200B211EA /* Picture.swift in Sources */,
 				5697E4AA24D04C5700B211EA /* ContentData.swift in Sources */,
-				566CF30324D0150800396693 /* ViewController.swift in Sources */,
+				566CF30324D0150800396693 /* MainViewController.swift in Sources */,
 				566CF2FF24D0150800396693 /* AppDelegate.swift in Sources */,
+				5697E4B324D0695A00B211EA /* MainPresenter.swift in Sources */,
+				5697E4BF24D0771200B211EA /* UIStoryboard+instantiateVC.swift in Sources */,
 				566CF30124D0150800396693 /* SceneDelegate.swift in Sources */,
 				5697E4A024D0489000B211EA /* Indefinite.swift in Sources */,
 				5697E4A824D04A9A00B211EA /* Content.swift in Sources */,

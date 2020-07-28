@@ -9,18 +9,13 @@
 import Foundation
 
 
-enum NetworkResponseError: Error {
-    case errorTimedOut
-    case notConnectedToInternet
-    case anotherError
-}
-
-
-protocol PryanikyNetworkServiceImpl {
+protocol NetworkServiceImpl {
+    
     func getData(onCompleted: @escaping (Result<Response, NetworkResponseError>) -> Void)
 }
 
-final class PryanikyNetworkService: PryanikyNetworkServiceImpl {
+
+final class PryanikyNetworkService: NetworkServiceImpl {
     
     //MARK: - Private properties
     private let path = "https://pryaniky.com/static/json/sample.json"
@@ -61,7 +56,6 @@ final class PryanikyNetworkService: PryanikyNetworkServiceImpl {
             }
         }
         task.resume()
-        
     }
     
     //MARK: - Private metods
@@ -77,3 +71,5 @@ final class PryanikyNetworkService: PryanikyNetworkServiceImpl {
     }
     
 }
+
+
