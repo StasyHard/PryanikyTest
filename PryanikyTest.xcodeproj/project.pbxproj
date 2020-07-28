@@ -20,6 +20,7 @@
 		5697E4A624D04A1600B211EA /* SelestorVariant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5697E4A524D04A1600B211EA /* SelestorVariant.swift */; };
 		5697E4A824D04A9A00B211EA /* Content.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5697E4A724D04A9A00B211EA /* Content.swift */; };
 		5697E4AA24D04C5700B211EA /* ContentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5697E4A924D04C5700B211EA /* ContentData.swift */; };
+		5697E4AD24D04DBA00B211EA /* PryanikyNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5697E4AC24D04DBA00B211EA /* PryanikyNetworkService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		5697E4A524D04A1600B211EA /* SelestorVariant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelestorVariant.swift; sourceTree = "<group>"; };
 		5697E4A724D04A9A00B211EA /* Content.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Content.swift; sourceTree = "<group>"; };
 		5697E4A924D04C5700B211EA /* ContentData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentData.swift; sourceTree = "<group>"; };
+		5697E4AC24D04DBA00B211EA /* PryanikyNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PryanikyNetworkService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 		566CF2FD24D0150800396693 /* PryanikyTest */ = {
 			isa = PBXGroup;
 			children = (
+				5697E4AB24D04D5F00B211EA /* Services */,
 				566CF31524D0184200396693 /* Models */,
 				566CF31324D0165F00396693 /* Application */,
 				566CF30424D0150800396693 /* Main.storyboard */,
@@ -126,6 +129,14 @@
 				5697E4A924D04C5700B211EA /* ContentData.swift */,
 			);
 			path = ResponseModels;
+			sourceTree = "<group>";
+		};
+		5697E4AB24D04D5F00B211EA /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				5697E4AC24D04DBA00B211EA /* PryanikyNetworkService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -199,6 +210,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5697E4AD24D04DBA00B211EA /* PryanikyNetworkService.swift in Sources */,
 				5697E4A224D048B200B211EA /* Picture.swift in Sources */,
 				5697E4AA24D04C5700B211EA /* ContentData.swift in Sources */,
 				566CF30324D0150800396693 /* ViewController.swift in Sources */,
