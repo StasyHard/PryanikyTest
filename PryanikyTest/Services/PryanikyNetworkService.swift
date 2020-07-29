@@ -11,7 +11,7 @@ import Foundation
 
 protocol NetworkServiceImpl {
     
-    func getData(onCompleted: @escaping (Result<Response, NetworkResponseError>) -> Void)
+    func getData(onCompleted: @escaping (Result<ResponseDataModel, NetworkResponseError>) -> Void)
 }
 
 
@@ -21,7 +21,7 @@ final class PryanikyNetworkService: NetworkServiceImpl {
     private let path = "https://pryaniky.com/static/json/sample.json"
     
     //MARK: - PryanikyNetworkServiceImpl
-    func getData(onCompleted: @escaping (Result<Response, NetworkResponseError>) -> Void) {
+    func getData(onCompleted: @escaping (Result<ResponseDataModel, NetworkResponseError>) -> Void) {
         
         guard let url = URL(string: path)
             else {
@@ -48,7 +48,7 @@ final class PryanikyNetworkService: NetworkServiceImpl {
             }
             
             do {
-                let response = try JSONDecoder().decode(Response.self, from: data)
+                let response = try JSONDecoder().decode(ResponseDataModel.self, from: data)
                 onCompleted(.success(response))
             } catch {
                 print(error.localizedDescription)

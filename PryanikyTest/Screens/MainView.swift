@@ -9,10 +9,10 @@
 import UIKit
 
 
-enum ViewState: Equatable {
+enum ViewState {
     case loading
     case failed(error: NetworkResponseError)
-    case success
+    case success(value: ResponseDataModel)
 }
 
 
@@ -27,43 +27,57 @@ class MainView: UIView {
     //MARK: - Private properties
     private var presenter: MainViewActions?
     
-    private var viewState: ViewState?
-    
-    private lazy var indicator: UIActivityIndicatorView = {
-        let indicator = UIActivityIndicatorView(style: .large)
-        indicator.translatesAutoresizingMaskIntoConstraints = false
-        return indicator
+    private lazy var loadingOrFailedView: LoadingAndFailedView = {
+        let view = LoadingAndFailedView()
+        return view
     }()
     
+    private lazy var succesView: SuccessView = {
+        let view = SuccessView()
+        return view
+    }()
+    
+    
     //MARK: - Private metods
-    private func showLoadingView() {
-        self.addSubview(indicator)
-        indicator.startAnimating()
-        indicator.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        indicator.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+    private func showLoadingOrFailedView(withState state: ViewState) {
+        self.addSubview(loadingOrFailedView)
+        loadingOrFailedView.translatesAutoresizingMaskIntoConstraints = false
+        loadingOrFailedView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+        loadingOrFailedView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
+        loadingOrFailedView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        loadingOrFailedView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        
+        loadingOrFailedView.showViewWithState(state)
     }
     
+    private func showSuccessView(whithViewsData viewsData: ResponseDataModel) {
+        self.addSubview(succesView)
+        succesView.translatesAutoresizingMaskIntoConstraints = false
+        succesView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+        succesView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
+        succesView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        succesView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        
+        succesView.showSuccessViews(forData: viewsData)
+    }
 }
 
 
 extension MainView: MainViewImplement {
     func showContentView(forState state: ViewState) {
         
-        if viewState != state {
-            self.subviews.forEach { $0.removeFromSuperview() }
-            
-            switch state {
-            case .loading, .failed(error: _):
-                showLoadingView()
-            case .success:
-                break
-            }
+        self.removeSubviews()
+        
+        switch state {
+        case .loading, .failed:
+            showLoadingOrFailedView(withState: state)
+        case .success(value: let viewsData):
+            showSuccessView(whithViewsData: viewsData)
         }
     }
     
     func setPresenter(_ presenter: MainViewActions) {
         self.presenter = presenter
     }
-    
     
 }

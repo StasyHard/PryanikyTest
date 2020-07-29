@@ -9,12 +9,12 @@
 import Foundation
 
 
-protocol BodyContent: Decodable {
+protocol BodyContent: Decodable  {
     func getContent<T: Decodable>() -> T?
 }
 
 
-struct ContentData<T: Decodable>: BodyContent {
+struct BodyDataModel<T: Decodable>: BodyContent {
     let data: T
     
     func getContent<R>() -> R? where R: Decodable {

@@ -37,6 +37,18 @@ extension MainPresenter: MainViewActions {
     func getContent() {
         view?.showContent(forState: .loading)
         
+        pryanikyNetworkService.getData { [weak self] result in
+                        
+            switch result {
+            case .success(let response):
+                DispatchQueue.main.async {
+                    self?.view?.showContent(forState: .success(value: response))
+                }
+            case .failure(let error):
+                self?.view?.showContent(forState: .failed(error: error))
+            }
+        }
+        
     }
     
     

@@ -10,7 +10,7 @@ import Foundation
 
 
 //picture
-struct Picture: Decodable {
+struct PictureModel: Decodable {
     let url: String
     let text: String
 }

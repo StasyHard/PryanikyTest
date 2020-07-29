@@ -10,6 +10,6 @@ import Foundation
 
 
 //hz
-struct Indefinite: Decodable {
+struct IndefiniteModel: Decodable {
     let text: String
 }
