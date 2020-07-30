@@ -11,6 +11,8 @@ import UIKit
 class SuccessView: UIView {
     
     //MARK: - Private properties
+    private var presenter: MainViewActions?
+    
     private lazy var stack: UIStackView = {
         let stack = UIStackView()
         stack.alignment = .fill
@@ -36,37 +38,35 @@ class SuccessView: UIView {
         let viewsNameArray = viewsDataModel.views
         let viewsData = viewsDataModel.data
         
-        for index in 0...viewsNameArray.count - 1 {
-            let name = viewsNameArray[index]
+        viewsNameArray.forEach {
+            let name = $0
             
             let model: ContentDataModel? = viewsData.first { model -> Bool in
                 model.title == name
             }
-            guard let modelContent = model?.body else { return }
+            guard let contentModel = model?.body else { return }
             
             switch name {
             case "hz":
-                if let hz: IndefiniteModel = modelContent.getContent() {
-                    let view = HzView() {
-                        print(model?.title)
+                if let hz: IndefiniteModel = contentModel.getContent() {
+                    let view = HzView() { [weak self] in
+                        self?.presenter?.didTappedView(title: model?.title)
                     }
                     view.showContent(content: hz)
                     stack.addArrangedSubview(view)
                 }
             case "picture":
-                if let picture: PictureModel = modelContent.getContent() {
-                    let view = PictureView() {
-                        print(model?.title)
+                if let picture: PictureModel = contentModel.getContent() {
+                    let view = PictureView() { [weak self] in
+                        self?.presenter?.didTappedView(title: model?.title)
                     }
                     view.showContent(content: picture)
                     stack.addArrangedSubview(view)
                 }
-                
             case "selector":
-                if let select: SelestorModel = modelContent.getContent() {
-                    let view = SelectorView() { ind in
-                        print(model?.title)
-                        print(ind)
+                if let select: SelestorModel = contentModel.getContent() {
+                    let view = SelectorView() { [weak self] ind in
+                        self?.presenter?.didTappedView(id: ind, title: model?.title)
                     }
                     view.showContent(select)
                     stack.addArrangedSubview(view)
@@ -75,7 +75,10 @@ class SuccessView: UIView {
                 break
             }
         }
-        
+    }
+    
+    func setPresenter(_ presenter: MainViewActions) {
+        self.presenter = presenter
     }
     
     //MARK: - Private metods
@@ -87,13 +90,12 @@ class SuccessView: UIView {
         self.addSubview(stack)
         
         stack.translatesAutoresizingMaskIntoConstraints = false
-        stack.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
-        stack.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
-        stack.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor).isActive = true
-    }
-    
-    func showTitle(title: String) {
-        
+        stack.leadingAnchor
+            .constraint(equalTo: self.leadingAnchor).isActive = true
+        stack.trailingAnchor
+            .constraint(equalTo: self.trailingAnchor).isActive = true
+        stack.topAnchor
+            .constraint(equalTo: self.safeAreaLayoutGuide.topAnchor).isActive = true
     }
     
 }

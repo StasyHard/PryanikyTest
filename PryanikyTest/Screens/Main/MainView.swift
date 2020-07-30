@@ -16,7 +16,7 @@ enum ViewState {
 }
 
 
-protocol MainViewImplement {
+protocol MainViewImpl {
     func setPresenter(_ presenter: MainViewActions)
     func showContentView(forState state: ViewState)
 }
@@ -58,12 +58,16 @@ class MainView: UIView {
         succesView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor).isActive = true
         succesView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
         
+        if let presenter = presenter {
+            succesView.setPresenter(presenter)
+        }
         succesView.showSuccessViews(forData: viewsData)
     }
 }
 
 
-extension MainView: MainViewImplement {
+//MARK: - MainViewImplement
+extension MainView: MainViewImpl {
     func showContentView(forState state: ViewState) {
         
         self.removeSubviews()

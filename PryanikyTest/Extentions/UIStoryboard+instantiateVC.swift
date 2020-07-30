@@ -17,9 +17,9 @@ extension UIStoryboard {
     }
     
     // MARK: - View Controllers init
-    static func instantiateMainVC() -> MainViewController {
+    static func instantiateMainVC() -> MainScreenViewController {
         let mainVC = main.instantiateViewController(
-            withIdentifier: "MainViewController") as! MainViewController
+            withIdentifier: "MainViewController") as! MainScreenViewController
         return mainVC
     }
     

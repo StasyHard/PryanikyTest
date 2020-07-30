@@ -11,22 +11,29 @@ import Foundation
 
 protocol MainViewActions: class {
     func getContent()
-    func didTappedView(id: Int, title: String)
+    func didTappedView(id: Int?, title: String?)
 }
 
-protocol MainViewImpl: class {
+extension MainViewActions {
+    func didTappedView(id: Int? = nil, title: String?) {
+        return didTappedView(id: id, title: title)
+    }
+}
+
+protocol MainScreenViewImpl: class {
     func showContent(forState state: ViewState)
+    func showInformationAlert(withMessage message: String)
 }
 
 
 final class MainPresenter {
     
     //MARK: - Private properties
-    private weak var view: MainViewImpl?
+    private weak var view: MainScreenViewImpl?
     private let pryanikyNetworkService: NetworkServiceImpl
     
     //MARK: - Init
-    init(view: MainViewImpl, pryanikyNetworkService: NetworkServiceImpl) {
+    init(view: MainScreenViewImpl, pryanikyNetworkService: NetworkServiceImpl) {
         self.view = view
         self.pryanikyNetworkService = pryanikyNetworkService
     }
@@ -35,15 +42,26 @@ final class MainPresenter {
 
 //MARK: - MainViewActions
 extension MainPresenter: MainViewActions {
-    func didTappedView(id: Int, title: String) {
+    
+    func didTappedView(id: Int?, title: String?) {
+        var alertMessage: String? = nil
         
+        if let id = id, let title = title {
+            alertMessage = "View id - \(String(id)), name - \(title)"
+        } else if id == nil, let title = title {
+            alertMessage = "Name - \(title)"
+        }
+        
+        guard let message = alertMessage else { return }
+        
+        view?.showInformationAlert(withMessage: message)
     }
     
     func getContent() {
         view?.showContent(forState: .loading)
         
         pryanikyNetworkService.getData { [weak self] result in
-                        
+            
             switch result {
             case .success(let response):
                 DispatchQueue.main.async {
@@ -53,8 +71,6 @@ extension MainPresenter: MainViewActions {
                 self?.view?.showContent(forState: .failed(error: error))
             }
         }
-        
     }
-    
     
 }

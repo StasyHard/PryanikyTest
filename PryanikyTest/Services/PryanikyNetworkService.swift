@@ -10,7 +10,6 @@ import Foundation
 
 
 protocol NetworkServiceImpl {
-    
     func getData(onCompleted: @escaping (Result<ResponseDataModel, NetworkResponseError>) -> Void)
 }
 
