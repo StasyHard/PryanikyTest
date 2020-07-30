@@ -12,39 +12,46 @@ import UIKit
 class HzView: UIView {
     
     //MARK: - Private properties
-    lazy var hzLbl: UILabel = {
+    private lazy var hzLbl: UILabel = {
         let label = UILabel()
-        label.backgroundColor = .systemGreen
         label.textAlignment = .center
         return label
     }()
     
-    //MARK: - Private properties
+    private var tapViewCallback: (() -> Void)?
     private let stdAnchorConstant: CGFloat = 20
     
     //MARK: - Init
+    init(tapViewCallback: @escaping () -> Void) {
+        super.init(frame: .zero)
+        self.tapViewCallback = tapViewCallback
+        setupUI()
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupLabel()
+        setupUI()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        setupLabel()
+        setupUI()
+    }
+    
+    //MARK: - Open metods
+    func showContent(content: IndefiniteModel) {
+        hzLbl.text = content.text
     }
     
     //MARK: - Private metods
-    
-    fileprivate func addTarget() {
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(labelDidTapped))
-        hzLbl.isUserInteractionEnabled = true
-        hzLbl.addGestureRecognizer(tapGesture)
+    private func setupUI() {
+        self.backgroundColor = .systemGray4
+        addTapListener()
+        setupLabel()
     }
     
     private func setupLabel() {
         self.addSubview(hzLbl)
-        addTarget()
         hzLbl.translatesAutoresizingMaskIntoConstraints = false
         hzLbl.leadingAnchor
             .constraint(equalTo: self.leadingAnchor, constant: stdAnchorConstant).isActive = true
@@ -56,8 +63,13 @@ class HzView: UIView {
             .constraint(equalTo: self.bottomAnchor, constant: -stdAnchorConstant).isActive = true
     }
     
-    @objc func labelDidTapped() {
-        print("labelDidTapped")
+    private func addTapListener() {
+        let selector = #selector(self.viewlDidTapped)
+        self.addGTapRecognizer(selector: selector)
+    }
+    
+    @objc private func viewlDidTapped() {
+        tapViewCallback?()
     }
     
 }

@@ -11,22 +11,29 @@ import UIKit
 
 class PictureView: UIView {
     
-    lazy var imageView: UIImageView = {
+    //MARK: - Private properties
+    private lazy var imageView: UIImageView = {
         let view = UIImageView()
         view.contentMode = .scaleAspectFill
         return view
     }()
     
-    lazy var titleLbl: UILabel = {
+    private lazy var titleLbl: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
         return label
     }()
     
-    //MARK: - Private properties
+    private var tapViewCallback: (() -> Void)?
     private let stdAnchorConstant: CGFloat = 20
     
     //MARK: - Init
+    init(tapViewCallback: @escaping () -> Void) {
+        super.init(frame: .zero)
+        self.tapViewCallback = tapViewCallback
+        setupUI()
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
@@ -37,9 +44,18 @@ class PictureView: UIView {
         setupUI()
     }
     
+    //MARK: - Open metods
+    func showContent(content: PictureModel) {
+        if let url = URL(string: content.url) {
+            imageView.loadImage(byUrl: url)
+        }
+        titleLbl.text = content.text
+    }
+    
     //MARK: - Private metods
     private func setupUI() {
-        self.backgroundColor = .lightGray
+        self.backgroundColor = .systemGray5
+        addTapListener()
         setupImageView()
         setupTitle()
     }
@@ -71,4 +87,15 @@ class PictureView: UIView {
         titleLbl.bottomAnchor
             .constraint(equalTo: self.bottomAnchor, constant: -stdAnchorConstant).isActive = true
     }
+    
+    private func addTapListener() {
+        
+        let selector = #selector(self.viewlDidTapped)
+        self.addGTapRecognizer(selector: selector)
+    }
+    
+    @objc private func viewlDidTapped() {
+        tapViewCallback?()
+    }
+    
 }

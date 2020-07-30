@@ -13,23 +13,14 @@ class MainViewController: UIViewController {
     //MARK: - Open properties
     var presenter: MainViewActions?
     
+    //MARK: - Private properties
     private lazy var mainView = self.view as? MainViewImplement
-    
-    let service = PryanikyNetworkService()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationUI()
-//        service.getData { response in
-//            switch response {
-//            case .success(let result):
-//                print(result)
-//            case .failure(let error):
-//                print(error)
-//            }
-//        }
     }
- 
+    
     override func viewWillAppear(_ animated: Bool) {
         presenter?.getContent()
     }

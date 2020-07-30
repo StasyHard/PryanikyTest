@@ -44,7 +44,7 @@ class MainView: UIView {
         loadingOrFailedView.translatesAutoresizingMaskIntoConstraints = false
         loadingOrFailedView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
         loadingOrFailedView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
-        loadingOrFailedView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        loadingOrFailedView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor).isActive = true
         loadingOrFailedView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
         
         loadingOrFailedView.showViewWithState(state)
@@ -55,7 +55,7 @@ class MainView: UIView {
         succesView.translatesAutoresizingMaskIntoConstraints = false
         succesView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
         succesView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
-        succesView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+        succesView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor).isActive = true
         succesView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
         
         succesView.showSuccessViews(forData: viewsData)

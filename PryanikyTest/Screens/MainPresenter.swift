@@ -11,6 +11,7 @@ import Foundation
 
 protocol MainViewActions: class {
     func getContent()
+    func didTappedView(id: Int, title: String)
 }
 
 protocol MainViewImpl: class {
@@ -34,6 +35,10 @@ final class MainPresenter {
 
 //MARK: - MainViewActions
 extension MainPresenter: MainViewActions {
+    func didTappedView(id: Int, title: String) {
+        
+    }
+    
     func getContent() {
         view?.showContent(forState: .loading)
         

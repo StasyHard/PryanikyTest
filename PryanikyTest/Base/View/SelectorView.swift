@@ -11,21 +11,26 @@ import UIKit
 
 class SelectorView: UIView {
     
-    lazy var segmentControl: UISegmentedControl = {
-        let segmentItems = ["First", "Second"]
-        let control = UISegmentedControl(items: segmentItems)
-        return control
-    }()
+    private var segmentControl: UISegmentedControl?
     
-    lazy var descriptionLbl: UILabel = {
+    private lazy var descriptionLbl: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
         return label
     }()
     
+    private var content: SelestorModel?
+    private var tapViewCallback: ((_ index: Int) -> Void)?
     private let stdAnchorConstant: CGFloat = 20
     
     //MARK: - Init
+    init(tapViewCallback: @escaping (_ index: Int) -> Void) {
+        super.init(frame: .zero)
+        self.tapViewCallback = tapViewCallback
+        
+        setupUI()
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
@@ -36,14 +41,36 @@ class SelectorView: UIView {
         setupUI()
     }
     
-    //MARK: - Private metods
-    private func setupUI() {
-        self.backgroundColor = .systemGray
+    //MARK: - Open metods
+    func showContent(_ content: SelestorModel) {
+        self.content = content
+        createSegmentControl(content: content)
         setupSegmentControl()
         setupDescriptionLbl()
+        
+        descriptionLbl.text = content.variants[content.selectedId].text
     }
     
+    //MARK: - Private metods
+    private func setupUI() {
+        self.backgroundColor = .systemGray6
+    }
+    
+    private func createSegmentControl(content: SelestorModel)  {
+        var segmentItems = [String]()
+        content.variants.forEach {
+            segmentItems.append(String($0.id))
+        }
+        let segmentControl = UISegmentedControl(items: segmentItems)
+        segmentControl.selectedSegmentIndex = content.selectedId
+        segmentControl.addTarget(self, action: #selector(indexChanged), for: .valueChanged)
+        self.segmentControl = segmentControl
+    }
+    
+    
     private func setupSegmentControl() {
+        guard let segmentControl = segmentControl else { return }
+        
         self.addSubview(segmentControl)
         segmentControl.translatesAutoresizingMaskIntoConstraints = false
         segmentControl.topAnchor
@@ -59,7 +86,7 @@ class SelectorView: UIView {
         self.addSubview(descriptionLbl)
         descriptionLbl.translatesAutoresizingMaskIntoConstraints = false
         descriptionLbl.topAnchor
-            .constraint(equalTo: segmentControl.bottomAnchor, constant: 8).isActive = true
+            .constraint(equalTo: segmentControl!.bottomAnchor, constant: 8).isActive = true
         descriptionLbl.leadingAnchor
             .constraint(greaterThanOrEqualTo: self.leadingAnchor, constant: stdAnchorConstant).isActive = true
         descriptionLbl.trailingAnchor
@@ -69,6 +96,17 @@ class SelectorView: UIView {
         descriptionLbl.centerXAnchor
             .constraint(equalTo: self.centerXAnchor).isActive = true
         
+    }
+    
+    @objc private func indexChanged() {
+        guard let segmentControl = segmentControl,
+            let content = content
+            else { return }
+        
+        let ind = segmentControl.selectedSegmentIndex
+        descriptionLbl.text = content.variants[ind].text
+        
+        tapViewCallback?(ind)
     }
     
 }

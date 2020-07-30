@@ -10,72 +10,81 @@ import UIKit
 
 class SuccessView: UIView {
     
+    //MARK: - Private properties
     private lazy var stack: UIStackView = {
         let stack = UIStackView()
-        stack.alignment = .center
+        stack.alignment = .fill
         stack.distribution = .fillProportionally
         stack.axis = .vertical
         return stack
     }()
     
-    private lazy var hzView: HzView = {
-        let hz = HzView()
-        return hz
-    }()
-    
-    private lazy var pictureView: PictureView = {
-        let view = PictureView()
-        return view
-    }()
-    
-    private lazy var selectorView: SelectorView = {
-        let view = SelectorView()
-        return view
-    }()
-    
-    func showTitle(title: String) {
-        
+    //MARK: - Init
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupUI()
     }
     
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        setupUI()
+    }
+    
+    //MARK: - Open metods
     func showSuccessViews(forData viewsDataModel: ResponseDataModel) {
         
         let viewsNameArray = viewsDataModel.views
         let viewsData = viewsDataModel.data
         
-        viewsNameArray.forEach { name in
+        for index in 0...viewsNameArray.count - 1 {
+            let name = viewsNameArray[index]
             
             let model: ContentDataModel? = viewsData.first { model -> Bool in
                 model.title == name
             }
+            guard let modelContent = model?.body else { return }
             
             switch name {
             case "hz":
-                let hz: IndefiniteModel? = model?.body?.getContent()
-                break
+                if let hz: IndefiniteModel = modelContent.getContent() {
+                    let view = HzView() {
+                        print(model?.title)
+                    }
+                    view.showContent(content: hz)
+                    stack.addArrangedSubview(view)
+                }
             case "picture":
-                let picture: PictureModel? = model?.body?.getContent()
-                break
+                if let picture: PictureModel = modelContent.getContent() {
+                    let view = PictureView() {
+                        print(model?.title)
+                    }
+                    view.showContent(content: picture)
+                    stack.addArrangedSubview(view)
+                }
+                
             case "selector":
-                 let selector: SelestorModel? = model?.body?.getContent()
-                break
+                if let select: SelestorModel = modelContent.getContent() {
+                    let view = SelectorView() { ind in
+                        print(model?.title)
+                        print(ind)
+                    }
+                    view.showContent(select)
+                    stack.addArrangedSubview(view)
+                }
             default:
                 break
             }
-            
-            
         }
+        
+    }
     
-        
+    //MARK: - Private metods
+    private func setupUI() {
+        setupStackView()
+    }
+    
+    fileprivate func setupStackView() {
         self.addSubview(stack)
-        stack.addArrangedSubview(hzView)
-        hzView.hzLbl.text = "hzView"
-        
-        stack.addArrangedSubview(pictureView)
-        pictureView.imageView.load(url: URL(string: "https://pryaniky.com/static/img/logo-a-512.png")!)
-        pictureView.titleLbl.text = "picture viev"
-        
-        stack.addArrangedSubview(selectorView)
-        selectorView.descriptionLbl.text = "selector view"
         
         stack.translatesAutoresizingMaskIntoConstraints = false
         stack.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
@@ -83,5 +92,8 @@ class SuccessView: UIView {
         stack.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor).isActive = true
     }
     
+    func showTitle(title: String) {
+        
+    }
     
 }
