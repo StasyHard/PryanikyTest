@@ -1,5 +1,5 @@
 //
-//  Indefinite.swift
+//  Picture.swift
 //  PryanikyTest
 //
 //  Created by Anastasia Reyngardt on 28.07.2020.
@@ -9,7 +9,8 @@
 import Foundation
 
 
-//hz
-struct Indefinite: Decodable {
+//picture
+struct PictureModel: Decodable {
+    let url: String
     let text: String
 }

@@ -9,8 +9,8 @@
 import Foundation
 
 
-struct Response: Decodable {
-    let data: [Content]
+struct ResponseDataModel: Decodable {
+    let data: [ContentDataModel]
     let views: [String]
     
     private enum CodingKeys: String, CodingKey {

@@ -1,5 +1,5 @@
 //
-//  Picture.swift
+//  NetworkResponseError.swift
 //  PryanikyTest
 //
 //  Created by Anastasia Reyngardt on 28.07.2020.
@@ -9,8 +9,8 @@
 import Foundation
 
 
-//picture
-struct Picture: Decodable {
-    let url: String
-    let text: String
+enum NetworkResponseError: Error {
+    case errorTimedOut
+    case notConnectedToInternet
+    case anotherError
 }

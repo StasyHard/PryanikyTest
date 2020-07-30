@@ -9,7 +9,7 @@
 import Foundation
 
 
-struct Content: Decodable {
+struct ContentDataModel: Decodable {
     let title: String
     let body: BodyContent?
     
@@ -24,14 +24,14 @@ struct Content: Decodable {
         
         switch title {
         case "hz":
-            let contentData = try? container.decode(Indefinite.self, forKey: .body)
-            self.body = contentData.map { ContentData(data: $0) }
+            let contentData = try? container.decode(IndefiniteModel.self, forKey: .body)
+            self.body = contentData.map { BodyDataModel(data: $0) }
         case "picture":
-            let contentData = try? container.decode(Picture.self, forKey: .body)
-            self.body = contentData.map { ContentData(data: $0) }
+            let contentData = try? container.decode(PictureModel.self, forKey: .body)
+            self.body = contentData.map { BodyDataModel(data: $0) }
         case "selector":
-            let contentData = try? container.decode(IsSelestor.self, forKey: .body)
-            self.body = contentData.map { ContentData(data: $0) }
+            let contentData = try? container.decode(SelestorModel.self, forKey: .body)
+            self.body = contentData.map { BodyDataModel(data: $0) }
         default:
             self.body = nil
         }

@@ -1,5 +1,5 @@
 //
-//  Selector.swift
+//  SelestorVariant.swift
 //  PryanikyTest
 //
 //  Created by Anastasia Reyngardt on 28.07.2020.
@@ -9,8 +9,7 @@
 import Foundation
 
 
-//selector
-struct IsSelestor: Decodable {
-    let selectedId: Int
-    let variants: [SelestorVariant]
+struct SelestorVariantModel: Decodable {
+    let id: Int
+    let text: String
 }
