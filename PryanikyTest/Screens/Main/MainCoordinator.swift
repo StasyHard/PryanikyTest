@@ -17,11 +17,11 @@ final class MainCoordinator: Coordinator {
     private let navController: UINavigationController
     
     // MARK: - Init
-       init(navController: UINavigationController) {
-           self.navController = navController
-       }
+    init(navController: UINavigationController) {
+        self.navController = navController
+    }
     
-        //MARK: - Open metods
+    //MARK: - Open metods
     func start() {
         let vc = UIStoryboard.instantiateMainVC()
         let networkService = PryanikyNetworkService()

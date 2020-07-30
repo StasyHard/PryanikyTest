@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		566CF2FF24D0150800396693 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566CF2FE24D0150800396693 /* AppDelegate.swift */; };
 		566CF30124D0150800396693 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566CF30024D0150800396693 /* SceneDelegate.swift */; };
-		566CF30324D0150800396693 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566CF30224D0150800396693 /* MainViewController.swift */; };
+		566CF30324D0150800396693 /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566CF30224D0150800396693 /* MainScreenViewController.swift */; };
 		566CF30624D0150800396693 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 566CF30424D0150800396693 /* Main.storyboard */; };
 		566CF30824D0150A00396693 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 566CF30724D0150A00396693 /* Assets.xcassets */; };
 		566CF30B24D0150A00396693 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 566CF30924D0150A00396693 /* LaunchScreen.storyboard */; };
@@ -35,13 +35,14 @@
 		5697E4CC24D18AF800B211EA /* SelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5697E4CB24D18AF800B211EA /* SelectorView.swift */; };
 		5697E4CE24D1A36900B211EA /* SuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5697E4CD24D1A36900B211EA /* SuccessView.swift */; };
 		5697E4D024D1D3FE00B211EA /* UIView+addTapRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5697E4CF24D1D3FE00B211EA /* UIView+addTapRecognizer.swift */; };
+		56A824DA24D2C89F00019B37 /* UIViewController+showAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A824D924D2C89F00019B37 /* UIViewController+showAlert.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		566CF2FB24D0150800396693 /* PryanikyTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PryanikyTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		566CF2FE24D0150800396693 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		566CF30024D0150800396693 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		566CF30224D0150800396693 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		566CF30224D0150800396693 /* MainScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewController.swift; sourceTree = "<group>"; };
 		566CF30524D0150800396693 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		566CF30724D0150A00396693 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		566CF30A24D0150A00396693 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -68,6 +69,7 @@
 		5697E4CB24D18AF800B211EA /* SelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectorView.swift; sourceTree = "<group>"; };
 		5697E4CD24D1A36900B211EA /* SuccessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessView.swift; sourceTree = "<group>"; };
 		5697E4CF24D1D3FE00B211EA /* UIView+addTapRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+addTapRecognizer.swift"; sourceTree = "<group>"; };
+		56A824D924D2C89F00019B37 /* UIViewController+showAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+showAlert.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,10 +137,7 @@
 		566CF31424D0169500396693 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				566CF30224D0150800396693 /* MainViewController.swift */,
-				5697E4B424D069B500B211EA /* MainView.swift */,
-				5697E4B224D0695A00B211EA /* MainPresenter.swift */,
-				5697E4BB24D0748300B211EA /* MainCoordinator.swift */,
+				56A824DB24D2CCC900019B37 /* Main */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -176,7 +175,7 @@
 		5697E4AE24D0627600B211EA /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				5697E4C024D089FD00B211EA /* View */,
+				5697E4C024D089FD00B211EA /* Views */,
 				5697E4AF24D0628200B211EA /* Enums */,
 			);
 			path = Base;
@@ -205,11 +204,12 @@
 				5697E4C524D16FAD00B211EA /* UIView+removeSubviews.swift */,
 				5697E4C924D1770600B211EA /* UIImageView+load.swift */,
 				5697E4CF24D1D3FE00B211EA /* UIView+addTapRecognizer.swift */,
+				56A824D924D2C89F00019B37 /* UIViewController+showAlert.swift */,
 			);
 			path = Extentions;
 			sourceTree = "<group>";
 		};
-		5697E4C024D089FD00B211EA /* View */ = {
+		5697E4C024D089FD00B211EA /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				5697E4C124D08D2500B211EA /* LoadingAndFailedView.swift */,
@@ -218,7 +218,18 @@
 				5697E4C724D1711D00B211EA /* PictureView.swift */,
 				5697E4CB24D18AF800B211EA /* SelectorView.swift */,
 			);
-			path = View;
+			path = Views;
+			sourceTree = "<group>";
+		};
+		56A824DB24D2CCC900019B37 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				566CF30224D0150800396693 /* MainScreenViewController.swift */,
+				5697E4B424D069B500B211EA /* MainView.swift */,
+				5697E4B224D0695A00B211EA /* MainPresenter.swift */,
+				5697E4BB24D0748300B211EA /* MainCoordinator.swift */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -301,7 +312,7 @@
 				5697E4B924D071B200B211EA /* AppCoordinator.swift in Sources */,
 				5697E4A224D048B200B211EA /* PictureModel.swift in Sources */,
 				5697E4AA24D04C5700B211EA /* BodyDataModel.swift in Sources */,
-				566CF30324D0150800396693 /* MainViewController.swift in Sources */,
+				566CF30324D0150800396693 /* MainScreenViewController.swift in Sources */,
 				5697E4C424D0916F00B211EA /* HzView.swift in Sources */,
 				566CF2FF24D0150800396693 /* AppDelegate.swift in Sources */,
 				5697E4B324D0695A00B211EA /* MainPresenter.swift in Sources */,
@@ -314,6 +325,7 @@
 				566CF31724D0185C00396693 /* ResponseDataModel.swift in Sources */,
 				5697E4CC24D18AF800B211EA /* SelectorView.swift in Sources */,
 				5697E4CA24D1770600B211EA /* UIImageView+load.swift in Sources */,
+				56A824DA24D2C89F00019B37 /* UIViewController+showAlert.swift in Sources */,
 				5697E4C824D1711D00B211EA /* PictureView.swift in Sources */,
 				5697E4A624D04A1600B211EA /* SelestorVariantModel.swift in Sources */,
 				5697E4A424D048D500B211EA /* SelestorModel.swift in Sources */,

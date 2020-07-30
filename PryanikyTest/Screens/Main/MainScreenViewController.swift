@@ -8,17 +8,21 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+class MainScreenViewController: UIViewController {
     
     //MARK: - Open properties
     var presenter: MainViewActions?
     
     //MARK: - Private properties
-    private lazy var mainView = self.view as? MainViewImplement
+    private lazy var mainView = self.view as? MainViewImpl
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationUI()
+        
+        if let presenter = presenter {
+            mainView?.setPresenter(presenter)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -33,12 +37,15 @@ class MainViewController: UIViewController {
 
 
 //MARK: - MainViewImpl
-extension MainViewController: MainViewImpl {
+extension MainScreenViewController: MainScreenViewImpl {
+    
+    func showInformationAlert(withMessage message: String) {
+        self.showAlert(title: "Information about view", msg: message)
+    }
     
     func showContent(forState state: ViewState) {
         mainView?.showContentView(forState: state)
     }
-    
-    
 }
+
 
