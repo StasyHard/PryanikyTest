@@ -1,1 +1,3 @@
 # PryanikyTest
+
+MVP + Coordinator + URLSession
